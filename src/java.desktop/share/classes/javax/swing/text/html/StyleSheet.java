@@ -1014,13 +1014,28 @@ public class StyleSheet extends StyleContext {
     }
 
     /**
-     * Converts a color string such as "RED" or "#NNNNNN" to a Color.
-     * Note: This will only convert the HTML3.2 color strings
-     *       or a string of length 7;
-     *       otherwise, it will return null.
-     *
-     * @param string color string such as "RED" or "#NNNNNN"
-     * @return the color
+     * Converts a color string such as "RED",  "rgb(r g b)",
+     * "rgba(r g b a)" or "#NNN", "#NNNN", "#NNNNNN",
+     * "#NNNNNNNN" to a Color.
+     * <p>
+     * Note : This will only convert string colors using names or 3, 4, 6, 8
+     * digit hexadecimal notations as specified by the CSS Color Module Level 4
+     * and rgb or rgba HTML3.2 strings.
+     * Otherwise, it will return null.
+     * This method is case-insensitive.
+     * <p>
+     * The following code defines instances of the same color :
+     * {@snippet lang="java" :
+     *   import java.awt.Color;
+     *   import javax.swing.text.html.StyleSheet;
+     *   StyleSheet styleSheet = new StyleSheet();
+     *   // An opaque lightseagreen
+     *   Color color0 = styleSheet.stringToColor("Lightseagreen");
+     *   Color color1 = styleSheet.stringToColor("#20b2aa");
+     * }
+     * <p>
+     * @param string color, string such as "RED" or "rgb(r g b)",  "rgba(r g b a)"
+     * or "#NNN", "#NNNN", "#NNNNNN", "#NNNNNNNN".
      */
     public Color stringToColor(String string) {
         return CSS.stringToColor(string);
