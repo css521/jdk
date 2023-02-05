@@ -1033,9 +1033,10 @@ public class StyleSheet extends StyleContext {
      *   Color color0 = styleSheet.stringToColor("Lightseagreen");
      *   Color color1 = styleSheet.stringToColor("#20b2aa");
      * }
-     * <p>
+     *
      * @param string color, string such as "RED" or "rgb(r g b)",  "rgba(r g b a)"
      * or "#NNN", "#NNNN", "#NNNNNN", "#NNNNNNNN".
+     * @return the color
      */
     public Color stringToColor(String string) {
         return CSS.stringToColor(string);
